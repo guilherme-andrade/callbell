@@ -31,6 +31,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem "rspec-rails"
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -41,3 +42,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'dry-rails'
+gem 'dry-configurable'
+gem 'use_cases', '~> 2.0.2'
+gem 'dry-monads'
+gem 'ruby-trello'
+gem 'dry-types'
+gem 'dry-validation'
+gem 'dry-struct'

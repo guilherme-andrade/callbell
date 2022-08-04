@@ -1,8 +1,17 @@
 class Api::V1::WebhooksController < ApplicationController
   def index
-    # TODO:
-    #   - insert the card to database if the event type is "createCard"
-    #   - update the card in database if the event type is "updateCard"
-    #   - delete the card in database if the event type is "deleteCard"
+    resolve('cards.webhooks.process').call(params) do |on|
+      on.success do |result|
+        head :ok
+      end
+
+      on.failure :not_found do |(code, message)|
+        render json: { error: message }, status: :not_found
+      end      
+
+      on.failure do |(code, message)|
+        render json: { error: message }, status: :unprocessable_entity
+      end
+    end
   end
 end

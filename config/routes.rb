@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resource :webhooks
+      match 'webhooks' => 'webhooks#index', via: [:get, :post]
       resources :cards
     end
   end
